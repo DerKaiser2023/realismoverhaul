@@ -12,11 +12,11 @@ public class RealismOverhaul {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        // Load config, register physics hooks
+        // Load config, register physics handlers
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        // Event handlers, biome generation, etc.
+        // Register events, world gen, physics logic
     }
 }
