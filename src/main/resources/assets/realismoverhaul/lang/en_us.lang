@@ -4,26 +4,5 @@
 # Mod Name
 mod_realismoverhaul.name=Realism Overhaul
 
-# Items
-item.rain_collector.name=Rain Collector
-item.weighted_sack.name=Weighted Sack
-item.canteen.name=Canteen
-item.water_purifier.name=Water Purifier
-
-# Blocks
-block.rain_collector.name=Rain Collector
-block.heavy_rock.name=Heavy Rock
-
-# Tile Entities
-tileEntity.rain_collector.name=Rain Collector Tile Entity
-
-# GUI Titles (e.g., for containers)
-gui.rain_collector.name=Rain Collector Interface
-
-# Tooltips (These are optional, and you can create more as needed)
-tooltip.rain_collector.description=Collects rainwater over time.
-tooltip.weighted_sack.description=A sack with increased weight for more realistic inventory management.
-tooltip.canteen.description=Can store water for survival use.
-
 # Other Strings
 mod_description=Realism Overhaul introduces new gameplay mechanics focused on real-world physics and survival challenges. This mod overhauls terrain, weather, fluid, and item physics to make your world more immersive and realistic.
