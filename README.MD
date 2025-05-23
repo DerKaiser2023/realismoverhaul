@@ -35,3 +35,5 @@
 ---
 
 this shit is still in development. i may overhaul the code later
+
+note: the python code is just system monitoring code for my sake of monitoring resources
