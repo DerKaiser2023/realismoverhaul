@@ -24,10 +24,17 @@ public class RealismOverhaul {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         proxy.registerRenderes(); // Register client renderers (models, particles, etc)
+        MinecraftForge.EVENT_BUS.register(new OffhandEventHandler()); // offhand register
+
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(new DamageHandler()); // Register damage handling system
+        KeyHandler.init();  // Registers key input
     }
+
+
+    @Mod.EventHandler
+    public void postInit(FMLPostInitializationEvent event) {}
 }
