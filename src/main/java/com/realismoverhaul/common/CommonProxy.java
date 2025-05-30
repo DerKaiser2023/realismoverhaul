@@ -8,9 +8,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class CommonProxy {
     public void init() {
         // Register server-side tile entities
-        GameRegistry.registerTileEntity(TileEntityRainCollector.class, "TileEntityRainCollector");
-        GameRegistry.registerTileEntity(TileEntityWindTurbine.class, "TileEntityWindTurbine");
-
+        
         // Register packet handler or server-only logic
         PacketHandler.init(); // Set up networking, if applicable
 
