@@ -1,4 +1,4 @@
-package com.realisticdamage.config;
+package com.realismoverhaul.config;
 
 import net.minecraftforge.common.config.Configuration;
 
