@@ -1,4 +1,4 @@
-package com.realisticdamage.realisticdamage.explosions;
+package com.realismoverhaul.explosions;
 
 import com.realisticdamage.realisticdamage.capability.IBodyStatus;
 import com.realisticdamage.realisticdamage.capability.BodyStatusProvider;
