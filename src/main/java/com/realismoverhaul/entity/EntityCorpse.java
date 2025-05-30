@@ -1,4 +1,4 @@
-package com.realisticdamage.realisticdamage.entity;
+package com.realismoverhaul.entity;
 
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.player.EntityPlayer;
