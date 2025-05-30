@@ -1,4 +1,4 @@
-package com.realisticdamage.realisticdamage.gui;
+package com.realismoverhaul.gui;
 
 import net.minecraft.client.gui.GuiScreen;
 
