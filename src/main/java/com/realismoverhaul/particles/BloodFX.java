@@ -1,4 +1,4 @@
-package com.realisticdamage.realisticdamage.particles;
+package com.realismoverhaul.particles;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
