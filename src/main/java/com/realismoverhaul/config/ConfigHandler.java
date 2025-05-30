@@ -21,4 +21,3 @@ public class ConfigHandler {
         config.save();
     }
 }
-// Will edit later
