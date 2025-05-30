@@ -1,7 +1,7 @@
 [{
   "modid": "realismoverhaul",
   "name": "Realism Overhaul",
-  "description": "Adds realistic world, block, item, and environmental physics.",
+  "description": "Adds realistic world, block, item, damage, and environmental physics.",
   "version": "1.0",
   "mcversion": "1.7.10",
   "url": "",
