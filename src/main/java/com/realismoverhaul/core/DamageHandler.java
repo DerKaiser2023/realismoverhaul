@@ -1,4 +1,4 @@
-package com.realisticdamage.realisticdamage.core;
+package com.realismoverhaul.core;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.player.EntityPlayer;
