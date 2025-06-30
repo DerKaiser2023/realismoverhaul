@@ -1,18 +1,26 @@
 package com.realismoverhaul.common;
 
-import com.realismoverhaul.tile.TileEntityRainCollector;
-import com.realismoverhaul.tile.TileEntityWindTurbine;
 import com.realismoverhaul.network.PacketHandler;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class CommonProxy {
     public void init() {
-        // Register server-side tile entities
-        
-        // Register packet handler or server-only logic
-        PacketHandler.init(); // Set up networking, if applicable
+        // Register server-side tile entities if needed
 
-        // Any other server-side setup goes here
+        PacketHandler.init(); // Set up networking
+
         System.out.println("[RealismOverhaul] Server-side CommonProxy initialized.");
+    }
+
+    // Stub methods for client-only calls
+    public void registerRenderers() {
+        // No-op on server
+    }
+
+    public void registerKeybinds() {
+        // No-op on server
+    }
+
+    public void openBodyStatusGui() {
+        // No GUI on server
     }
 }

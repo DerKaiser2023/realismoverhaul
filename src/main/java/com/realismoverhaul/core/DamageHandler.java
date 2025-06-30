@@ -1,5 +1,7 @@
 package com.realismoverhaul.core;
 
+import com.realismoverhaul.capability.BodyStatusProvider;
+import com.realismoverhaul.capability.IBodyStatus;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
@@ -12,49 +14,51 @@ public class DamageHandler {
     @SubscribeEvent
     public void onDamage(LivingHurtEvent event) {
         if (event.entityLiving == null || event.source == null) return;
+        if (!(event.entityLiving instanceof EntityPlayer)) return;
+
+        EntityPlayer player = (EntityPlayer) event.entityLiving;
+        IBodyStatus status = player.getCapability(BodyStatusProvider.BODY_STATUS_CAP, null);
+        if (status == null) return;
 
         float damage = event.ammount;
-        String part = pickHitBodyPart(); // Placeholder logic
-        World world = event.entityLiving.worldObj;
+        String part = pickHitBodyPart();
+        World world = player.worldObj;
 
+        // Apply custom logic
         switch (part) {
             case "head":
                 damage *= 3.0F;
-                playSound(world, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, "realisticdamage:effects.bone_crack");
+                status.setHealth("head", status.getHealth("head") - damage);
+                playSound(world, player.posX, player.posY, player.posZ, "realisticdamage:effects.bone_crack");
                 break;
 
             case "arm":
-                if (event.entityLiving instanceof EntityPlayer) {
-                    EntityPlayer player = (EntityPlayer) event.entityLiving;
-                    player.stopUsingItem(); // forcibly stop using held item
-                    // may eventually flag in capability to fully disable item usage
-                }
-                playSound(world, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, "realisticdamage:effects.bone_crack");
+                status.setHealth("right_arm", status.getHealth("right_arm") - damage); // could randomize left/right
+                player.stopUsingItem();
+                playSound(world, player.posX, player.posY, player.posZ, "realisticdamage:effects.bone_crack");
                 break;
 
             case "leg":
-                if (event.entityLiving instanceof EntityPlayer) {
-                    EntityPlayer player = (EntityPlayer) event.entityLiving;
-                    player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 100, 1)); // 5 seconds slowness
-                }
-                playSound(world, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, "realisticdamage:effects.bone_crack");
+                status.setHealth("right_leg", status.getHealth("right_leg") - damage); // could randomize left/right
+                player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 100, 1));
+                playSound(world, player.posX, player.posY, player.posZ, "realisticdamage:effects.bone_crack");
                 break;
 
             case "torso":
-                // No specific torso logic yet, but might trigger bleedout or internal damage later
+                status.setHealth("torso", status.getHealth("torso") - damage);
+                // Future: bleedout risk or organ damage
                 break;
         }
 
-        // Blood splatter/body fall sound on high damage
+        // Trigger sound for hard impacts
         if (damage > 6.0F) {
-            playSound(world, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, "realisticdamage:effects.body_fall");
+            playSound(world, player.posX, player.posY, player.posZ, "realisticdamage:effects.body_fall");
         }
 
-        event.amount = damage;
+        event.ammount = damage;
     }
 
     private String pickHitBodyPart() {
-        // Later replace with real raytrace/hitbox
         String[] parts = {"head", "torso", "arm", "leg"};
         return parts[(int) (Math.random() * parts.length)];
     }
